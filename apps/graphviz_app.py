@@ -34,8 +34,8 @@ def plot_graph_from_content(content):
 
 col1, col2 = st.columns(2)
 with col1:
-    st.write("输入内容")
-    content = st.text_area("输入内容", """
+    st.write("Input content")
+    content = st.text_area("Input content", """
 run intr
 intr runbl
 runbl run
@@ -51,7 +51,7 @@ sleep runmem
 kernel runmem
 """, height=500)
 with col2:
-    st.write("绘制图表")
+    st.write("Draw graph")
     plot_graph_from_content(content)
 
 plot_graph()

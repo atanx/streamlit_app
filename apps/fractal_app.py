@@ -33,28 +33,28 @@ def mandelbrot(h, w, x_min, x_max, y_min, y_max, max_iter):
 
     return divtime
 
-st.title("数据可视化")
+st.title("Mandelbrot Set")
 state = st.session_state
 state.x_center = 0.27
 state.y_center = 0.0
 
 # 控制参数
 with st.sidebar:
-    resolution = st.slider("分辨率", 100, 1000, 500)
-    max_iter = st.slider("最大迭代次数", 20, 100, 50)
+    resolution = st.slider("Resolution", 100, 1000, 500)
+    max_iter = st.slider("Max Iterations", 20, 100, 50)
     colorscale = st.selectbox(
-        "选择颜色方案",
+        "Select a color scheme",
         ['Viridis', 'Plasma', 'Inferno', 'Magma', 'Hot', 'Electric']
     )
      
-    is_animating = st.checkbox("开始动画", False)
+    is_animating = st.checkbox("Start Animation", False)
 
     # x_min = st.slider("x的最小值", -2.0, 2.0, -1.4 + 0.2)
     # x_max = st.slider("x的最大值", -2.0, 2.0, 1.4 + 0.2)
     # y_min = st.slider("y的最小值", -2.0, 2.0, -1.4)
     # y_max = st.slider("y的最大值", -2.0, 2.0, 1.4)
-    x_center = st.slider("x的中心值", -2.0, 2.0, state.x_center)
-    y_center = st.slider("y的中心值", -2.0, 2.0, state.y_center)
+    x_center = st.slider("x center", -2.0, 2.0, state.x_center)
+    y_center = st.slider("y center", -2.0, 2.0, state.y_center)
     x_min = x_center - 1.4
     x_max = x_center + 1.4
     y_min = y_center - 1.4

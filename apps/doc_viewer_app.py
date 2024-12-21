@@ -13,7 +13,7 @@ def get_file_list(path, file_type):
 with st.sidebar:
     file_list = get_file_list(".", ".py")
     file_list += [st.__file__]
-    selected_file = st.selectbox("选择文件", file_list)
+    selected_file = st.selectbox("Select a file", file_list)
     
     st_file = st.__file__
     
@@ -33,9 +33,9 @@ with st.sidebar:
 
 if selected_file:
     with open(selected_file, "r", encoding="utf-8") as f:
+        st.header(f"Current file: {selected_file}")
         with st.container(height=800):
             data = f.read()
-            st.header(f"当前文件: {selected_file}")
             st.code(data, language="python", line_numbers=True)
 
 
