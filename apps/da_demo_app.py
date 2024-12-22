@@ -116,5 +116,4 @@ def main():
             df.to_csv('processed_data.csv', index=False)
             st.success("数据已导出到 processed_data.csv")
 
-if __name__ == "__main__":
-    main()
+main()
