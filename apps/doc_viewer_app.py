@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 
-st.set_page_config(layout="wide")
+# st.set_page_config(layout="wide")
 
 def get_file_list(path, file_type):
     return [each for each in os.listdir(path) if each.endswith(file_type)]
