@@ -39,11 +39,11 @@ def main():
     if uploaded_file is not None:
         df = load_data(uploaded_file)
     else:
-        try:
-            df = pd.read_excel("/Users/jiangbin/Downloads/学生成绩.xlsx")
-        except Exception as e:
-            st.error(f"Error: {str(e)}")
-            df = None
+        default_file = "~/Downloads/学生成绩.xlsx"
+        if os.path.exists(default_file):
+            df = pd.read_excel(default_file)
+        else:
+            st.error(f"Error: {default_file} not found")
     if df is not None:
         # 显示基本信息
         st.header("数据概览")
