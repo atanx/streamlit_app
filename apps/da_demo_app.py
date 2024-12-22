@@ -39,7 +39,11 @@ def main():
     if uploaded_file is not None:
         df = load_data(uploaded_file)
     else:
-        df = pd.read_excel("/Users/jiangbin/Downloads/学生成绩.xlsx")
+        try:
+            df = pd.read_excel("/Users/jiangbin/Downloads/学生成绩.xlsx")
+        except Exception as e:
+            st.error(f"Error: {str(e)}")
+            df = None
     if df is not None:
         # 显示基本信息
         st.header("数据概览")
