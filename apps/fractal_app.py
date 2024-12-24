@@ -37,30 +37,40 @@ st.title("Mandelbrot Set")
 state = st.session_state
 state.x_center = 0.27
 state.y_center = 0.0
+state.width = 0.2
 
 # 控制参数
 with st.sidebar:
     resolution = st.slider("Resolution", 100, 1000, 500)
-    max_iter = st.slider("Max Iterations", 20, 100, 50)
+    max_iter = st.slider("Max Iterations", 20, 500, 100)
     colorscale = st.selectbox(
         "Select a color scheme",
         ['Viridis', 'Plasma', 'Inferno', 'Magma', 'Hot', 'Electric']
     )
      
-    is_animating = st.checkbox("Start Animation", False)
 
+cols = st.columns([1, 3])
+with cols[0]:
+    is_animating = st.checkbox("Start Animation", False)
     # x_min = st.slider("x的最小值", -2.0, 2.0, -1.4 + 0.2)
     # x_max = st.slider("x的最大值", -2.0, 2.0, 1.4 + 0.2)
     # y_min = st.slider("y的最小值", -2.0, 2.0, -1.4)
     # y_max = st.slider("y的最大值", -2.0, 2.0, 1.4)
     x_center = st.slider("x center", -2.0, 2.0, state.x_center)
     y_center = st.slider("y center", -2.0, 2.0, state.y_center)
-    x_min = x_center - 1.4
-    x_max = x_center + 1.4
-    y_min = y_center - 1.4
-    y_max = y_center + 1.4
+    max_width = st.slider("max width", 0.001, 1.0, 1.0)
+    width = st.slider("width", 0.001/100, max_width, state.width, max_width/1000)
+    x_min = x_center  - width
+    x_max = x_center + width
+    y_min = y_center - width
+    y_max = y_center + width
 
-plot_placeholder = st.empty()
+    st.write("x_min: ", x_min)
+    st.write("x_max: ", x_max)
+    st.write("y_min: ", y_min)
+    st.write("y_max: ", y_max)
+with cols[1]:
+    plot_placeholder = st.empty() 
 
 # 计算分形
 fractal = mandelbrot(resolution, resolution, x_min, x_max, y_min, y_max, max_iter)
@@ -76,8 +86,8 @@ fig = go.Figure(data=go.Heatmap(
 fig.update_layout(
     width=800,
     height=800,
-    xaxis=dict(showticklabels=False),
-    yaxis=dict(showticklabels=False),
+    xaxis=dict(showticklabels=True),
+    yaxis=dict(showticklabels=True),
     plot_bgcolor='black',
     paper_bgcolor='black'
 )
@@ -102,14 +112,14 @@ if is_animating:
         fig = go.Figure(data=go.Heatmap(
             z=fractal,
             colorscale=colorscale,
-            showscale=False
+            showscale=True
         ))
         
         fig.update_layout(
             width=800,
             height=800,
-            xaxis=dict(showticklabels=False),
-            yaxis=dict(showticklabels=False),
+            xaxis=dict(showticklabels=True),
+            yaxis=dict(showticklabels=True),
             plot_bgcolor='black',
             paper_bgcolor='black'
         )

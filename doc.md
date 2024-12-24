@@ -1,17 +1,7 @@
 
-# streamlit 文档
-https://docs.streamlit.io/
-
-# 数据分析
-https://www.data-to-viz.com/
-
-# 数据可视化
-https://datavizcatalogue.com/
-
-```bash
-# 安装streamlit
-pip install streamlit
-
-# 运行streamlit
-streamlit run app.py
-```
+数据分析流程
+1. 数据加载
+2. 数据预处理
+2. 数据分析
+3. 数据可视化
+4. 数据报告

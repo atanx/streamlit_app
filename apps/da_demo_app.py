@@ -5,6 +5,7 @@ import plotly.express as px
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']  # Mac OS的中文字体
 # 或者使用
 # plt.rcParams['font.sans-serif'] = ['SimHei']  # Windows的中文字体
@@ -25,21 +26,20 @@ def load_data(file):
 
 def main():
     st.title("数据分析工具")
-    st.sidebar.title("设置")
+    # 文件上传
+    col1, col2 = st.columns([1, 2])
+    uploaded_file = col1.file_uploader("上传数据文件", type=['csv', 'xlsx', 'xls'])
     if os.path.exists("doc.md"):
         with open("doc.md", "r", encoding="utf-8") as f:
-            st.markdown(f.read())
+            col2.code(f.read())
     else:
-        st.markdown("doc.md 文件不存在")
+        col2.code("doc.md 文件不存在")
 
-    # 文件上传
-    uploaded_file = st.sidebar.file_uploader("上传数据文件", type=['csv', 'xlsx', 'xls'])
-    
     df = None
     if uploaded_file is not None:
         df = load_data(uploaded_file)
     else:
-        default_file = "~/Downloads/学生成绩.xlsx"
+        default_file = os.path.expanduser("~/Downloads/学生成绩.xlsx")
         if os.path.exists(default_file):
             df = pd.read_excel(default_file)
         else:
