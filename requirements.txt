@@ -7,3 +7,5 @@ seaborn
 requests
 plotly
 openpyxl
+rembg
+onnxruntime

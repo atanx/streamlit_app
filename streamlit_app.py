@@ -39,6 +39,8 @@ awesome_app_page = st.Page("apps/awesome_app.py", title="Awesome Websites", icon
 nextjs_cheatsheet_app_page = st.Page("apps/cheatsheets/nextjs_cheatsheet_app.py", title="Next.js Cheatsheet", icon=":material/code:")
 vue3_cheatsheet_app_page = st.Page("apps/cheatsheets/vue3_cheatsheet_app.py", title="Vue 3 Cheatsheet", icon=":material/code:")
 
+gif_remove_bg_app_page = st.Page("apps/dev/gif_remove_bg_app.py", title="GIF Remove BG", icon=":material/code:")
+
 if st.session_state.logged_in:
     pg = st.navigation(
         
@@ -46,7 +48,7 @@ if st.session_state.logged_in:
             "Dev": [dev_app_page, cheatsheet_app_page, swift_cheatshee_app_page, 
                     nextjs_cheatsheet_app_page, vue3_cheatsheet_app_page, bootstrap_app_page, chat_bot_app_page, 
                     api_debugger_app_page],
-            "Tools": [data_analysis_app_page, graphviz_app_page, doc_viewer_app_page],
+            "Tools": [data_analysis_app_page, graphviz_app_page, doc_viewer_app_page, gif_remove_bg_app_page],
             "Explore": [camera_app_page, fractal_app_page, awesome_app_page],
             "Account": [logout_page],
         }
@@ -57,7 +59,7 @@ else:
             "Dev": [dev_app_page, cheatsheet_app_page, swift_cheatshee_app_page, 
                     nextjs_cheatsheet_app_page, vue3_cheatsheet_app_page, bootstrap_app_page, chat_bot_app_page, 
                     api_debugger_app_page],
-            "Tools": [data_analysis_app_page, graphviz_app_page, doc_viewer_app_page],
+            "Tools": [data_analysis_app_page, graphviz_app_page, doc_viewer_app_page, gif_remove_bg_app_page],
             "Explore": [camera_app_page, fractal_app_page, awesome_app_page],
             "Account": [login_page],
         })
